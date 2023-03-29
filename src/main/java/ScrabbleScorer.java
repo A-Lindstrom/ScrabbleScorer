@@ -6,14 +6,29 @@ public class ScrabbleScorer {
     Scanner userInput = new Scanner(System.in);
 
     public void run(){
-        System.out.println("Welcome to Scrabble Scorer! Enter the word you would like scored, " +
-                "or two words separated by a single space for a comparison. Do not include punctuation.");
-        String toScore = userInput.nextLine().toLowerCase();
-        if (toScore.contains(" ")) {
-            String higherScoring = compareScores(toScore);
-            System.out.println("\"" + higherScoring + "\"" + " is the higher scoring word and is worth " + scoreSingle(higherScoring) + " points");
-        } else {
-            System.out.println("The score is " + scoreSingle(toScore));
+        System.out.println();
+        System.out.println();
+        System.out.println("**********Welcome to Scrabble Scorer!**********");
+        System.out.println();
+        System.out.println();
+        boolean isContinuing = true;
+        while (isContinuing) {
+            System.out.println("Enter the word you would like scored, or two words separated by a single space for a comparison.");
+            String toScore = userInput.nextLine().toLowerCase();
+            if (toScore.contains(" ")) {
+                String higherScoring = compareScores(toScore);
+                System.out.println("\"" + higherScoring + "\"" + " is the higher scoring word and is worth " + scoreSingle(higherScoring) + " points");
+            } else {
+                System.out.println("The score is " + scoreSingle(toScore));
+            }
+            System.out.println();
+            System.out.println();
+            System.out.println("Would you like to ScrabbleScore again? (Y/N)");
+            String answer = userInput.nextLine();
+            if (answer.equalsIgnoreCase("N")){
+                isContinuing = false;
+                System.out.println("Bye!");
+            }
         }
     }
 
